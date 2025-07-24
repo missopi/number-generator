@@ -58,7 +58,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.card}>
-        <ScrollView contentContainerStyle={styles.numberList}>
+        <ScrollView contentContainerStyle={styles.numberList} showsVerticalScrollIndicator={false}>
           {numbers.map((num, idx) => (
             <Text key={idx} style={styles.number}>{num}</Text>
           ))}
