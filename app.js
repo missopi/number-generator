@@ -1,7 +1,7 @@
-import * as Speech from 'expo-speech';
 import { useState } from 'react';
 import { Button, SafeAreaView, ScrollView, Text, TextInput, View } from 'react-native';
 import styles from './styles';
+import * as Speech from 'expo-speech';
 
 export default function App() {
   const [min, setMin] = useState('1');
