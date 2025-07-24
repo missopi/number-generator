@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, Button, ScrollView } from 'react-native';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 import * as Speech from 'expo-speech';
 
@@ -46,34 +46,49 @@ export default function App() {
     Speech.speak(spoken);
   };
 
+  const StyledButton = ({ title, onPress, active }) => (
+    <TouchableOpacity
+      onPress={onPress}
+      style={[styles.button, active && styles.buttonActive]}
+    >
+      <Text style={styles.buttonText}>{title}</Text>
+    </TouchableOpacity>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <ScrollView contentContainerStyle={styles.numberList}>
+          {numbers.map((num, idx) => (
+            <Text key={idx} style={styles.number}>{num}</Text>
+          ))}
+        </ScrollView>
+      </View>
+
       <Text style={styles.title}>Number Generator</Text>
+
       <View style={styles.row}>
         <TextInput style={styles.input} keyboardType="numeric" value={min} onChangeText={setMin} placeholder="Min" />
         <TextInput style={styles.input} keyboardType="numeric" value={max} onChangeText={setMax} placeholder="Max" />
         <TextInput style={styles.input} keyboardType="numeric" value={increment} onChangeText={setIncrement} placeholder="Step" />
       </View>
+
       <View style={styles.row}>
-        <Button title="All" onPress={() => setFilter('all')} color={filter === 'all' ? 'blue' : 'gray'} />
-        <Button title="Even" onPress={() => setFilter('even')} color={filter === 'even' ? 'blue' : 'gray'} />
-        <Button title="Odd" onPress={() => setFilter('odd')} color={filter === 'odd' ? 'blue' : 'gray'} />
+        <StyledButton title="All" onPress={() => setFilter('all')} active={filter === 'all'} />
+        <StyledButton title="Even" onPress={() => setFilter('even')} active={filter === 'even'} />
+        <StyledButton title="Odd" onPress={() => setFilter('odd')} active={filter === 'odd'} />
       </View>
+
       <View style={styles.row}>
-        <Button title="Asc" onPress={() => setSortOrder('asc')} color={sortOrder === 'asc' ? 'blue' : 'gray'} />
-        <Button title="Desc" onPress={() => setSortOrder('desc')} color={sortOrder === 'desc' ? 'blue' : 'gray'} />
+        <StyledButton title="Asc" onPress={() => setSortOrder('asc')} active={sortOrder === 'asc'} />
+        <StyledButton title="Desc" onPress={() => setSortOrder('desc')} active={sortOrder === 'desc'} />
       </View>
+
       <View style={styles.row}>
-        <Button title="Generate" onPress={generateList} />
-        <Button title="Randomize" onPress={randomizeList} />
-        <Button title="Pick One" onPress={pickOne} />
+        <StyledButton title="Generate" onPress={generateList} />
+        <StyledButton title="Randomize" onPress={randomizeList} />
+        <StyledButton title="Pick One" onPress={pickOne} />
       </View>
-      <ScrollView style={styles.scroll}>
-        {numbers.map((num, idx) => (
-          <Text key={idx} style={styles.number}>{num}</Text>
-        ))}
-      </ScrollView>
     </SafeAreaView>
   );
-}
-
+};
