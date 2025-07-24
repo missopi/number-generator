@@ -28,9 +28,9 @@ export default StyleSheet.create({
   card: {
     backgroundColor: '#1f1f1f',
     borderRadius: 20,
-    padding: 20,
-    marginBottom: 10,
-    maxHeight: 450,
+    padding: 10,
+    margin: 10,
+    height: 450,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -39,7 +39,7 @@ export default StyleSheet.create({
   },
   number: {
     color: 'white',
-    fontSize: 32,
+    fontSize: 65,
     marginVertical: 4
   },
   button: {
