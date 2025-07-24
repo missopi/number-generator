@@ -28,18 +28,20 @@ export default StyleSheet.create({
   card: {
     backgroundColor: '#1f1f1f',
     borderRadius: 20,
-    padding: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     margin: 10,
     height: 450,
-    justifyContent: 'center',
-    alignItems: 'center'
+    overflow: 'hidden',
   },
   numberList: {
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingBottom: 10,
+    flexGrow: 1,
   },
   number: {
     color: 'white',
-    fontSize: 65,
+    fontSize: 62,
     marginVertical: 4
   },
   button: {

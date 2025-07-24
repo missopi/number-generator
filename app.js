@@ -1,8 +1,17 @@
 
-import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import styles from './styles';
 import * as Speech from 'expo-speech';
+import { useState } from 'react';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native';
+import styles from './styles';
 
 export default function App() {
   const [min, setMin] = useState('1');
@@ -56,39 +65,48 @@ export default function App() {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
-        <ScrollView contentContainerStyle={styles.numberList} showsVerticalScrollIndicator={false}>
-          {numbers.map((num, idx) => (
-            <Text key={idx} style={styles.number}>{num}</Text>
-          ))}
-        </ScrollView>
-      </View>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
+      <SafeAreaView style={styles.container}>
+        <View style={styles.card}>
+          <ScrollView
+            contentContainerStyle={styles.numberList}
+            showsVerticalScrollIndicator={false}
+            keyboardShouldPersistTaps="handled"
+          >
+            {numbers.map((num, idx) => (
+              <Text key={idx} style={styles.number}>{num}</Text>
+            ))}
+          </ScrollView>
+        </View>
 
-      <Text style={styles.title}>Number Generator</Text>
+        <Text style={styles.title}>Number Generator</Text>
 
-      <View style={styles.row}>
-        <TextInput style={styles.input} keyboardType="numeric" value={min} onChangeText={setMin} placeholder="Min" />
-        <TextInput style={styles.input} keyboardType="numeric" value={max} onChangeText={setMax} placeholder="Max" />
-        <TextInput style={styles.input} keyboardType="numeric" value={increment} onChangeText={setIncrement} placeholder="Step" />
-      </View>
+        <View style={styles.row}>
+          <TextInput style={styles.input} keyboardType="numeric" value={min} onChangeText={setMin} placeholder="Min" />
+          <TextInput style={styles.input} keyboardType="numeric" value={max} onChangeText={setMax} placeholder="Max" />
+          <TextInput style={styles.input} keyboardType="numeric" value={increment} onChangeText={setIncrement} placeholder="Step" />
+        </View>
 
-      <View style={styles.row}>
-        <StyledButton title="All" onPress={() => setFilter('all')} active={filter === 'all'} />
-        <StyledButton title="Even" onPress={() => setFilter('even')} active={filter === 'even'} />
-        <StyledButton title="Odd" onPress={() => setFilter('odd')} active={filter === 'odd'} />
-      </View>
+        <View style={styles.row}>
+          <StyledButton title="All" onPress={() => setFilter('all')} active={filter === 'all'} />
+          <StyledButton title="Even" onPress={() => setFilter('even')} active={filter === 'even'} />
+          <StyledButton title="Odd" onPress={() => setFilter('odd')} active={filter === 'odd'} />
+        </View>
 
-      <View style={styles.row}>
-        <StyledButton title="Asc" onPress={() => setSortOrder('asc')} active={sortOrder === 'asc'} />
-        <StyledButton title="Desc" onPress={() => setSortOrder('desc')} active={sortOrder === 'desc'} />
-      </View>
+        <View style={styles.row}>
+          <StyledButton title="Asc" onPress={() => setSortOrder('asc')} active={sortOrder === 'asc'} />
+          <StyledButton title="Desc" onPress={() => setSortOrder('desc')} active={sortOrder === 'desc'} />
+        </View>
 
-      <View style={styles.row}>
-        <StyledButton title="Generate" onPress={generateList} />
-        <StyledButton title="Randomize" onPress={randomizeList} />
-        <StyledButton title="Pick One" onPress={pickOne} />
-      </View>
-    </SafeAreaView>
+        <View style={styles.row}>
+          <StyledButton title="Generate" onPress={generateList} />
+          <StyledButton title="Randomize" onPress={randomizeList} />
+          <StyledButton title="Pick One" onPress={pickOne} />
+        </View>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
