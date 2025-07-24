@@ -33,4 +33,4 @@ export default StyleSheet.create({
     textAlign: 'center',
     marginVertical: 5
   }
-})
+});

@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Button, SafeAreaView, ScrollView, Text, TextInput, View } from 'react-native';
+
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, TextInput, Button, ScrollView } from 'react-native';
 import styles from './styles';
 import * as Speech from 'expo-speech';
 
@@ -8,8 +9,8 @@ export default function App() {
   const [max, setMax] = useState('100');
   const [increment, setIncrement] = useState('1');
   const [numbers, setNumbers] = useState([]);
-  const [filter, setFilter] = useState('all'); // 'all', 'even', 'odd'
-  const [sortOrder, setSortOrder] = useState('asc'); // 'asc', 'desc'
+  const [filter, setFilter] = useState('all');
+  const [sortOrder, setSortOrder] = useState('asc');
 
   const generateList = () => {
     const start = parseInt(min);
@@ -48,30 +49,25 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Number Generator</Text>
-
       <View style={styles.row}>
         <TextInput style={styles.input} keyboardType="numeric" value={min} onChangeText={setMin} placeholder="Min" />
         <TextInput style={styles.input} keyboardType="numeric" value={max} onChangeText={setMax} placeholder="Max" />
         <TextInput style={styles.input} keyboardType="numeric" value={increment} onChangeText={setIncrement} placeholder="Step" />
       </View>
-
       <View style={styles.row}>
         <Button title="All" onPress={() => setFilter('all')} color={filter === 'all' ? 'blue' : 'gray'} />
         <Button title="Even" onPress={() => setFilter('even')} color={filter === 'even' ? 'blue' : 'gray'} />
         <Button title="Odd" onPress={() => setFilter('odd')} color={filter === 'odd' ? 'blue' : 'gray'} />
       </View>
-
       <View style={styles.row}>
         <Button title="Asc" onPress={() => setSortOrder('asc')} color={sortOrder === 'asc' ? 'blue' : 'gray'} />
         <Button title="Desc" onPress={() => setSortOrder('desc')} color={sortOrder === 'desc' ? 'blue' : 'gray'} />
       </View>
-
       <View style={styles.row}>
         <Button title="Generate" onPress={generateList} />
         <Button title="Randomize" onPress={randomizeList} />
         <Button title="Pick One" onPress={pickOne} />
       </View>
-
       <ScrollView style={styles.scroll}>
         {numbers.map((num, idx) => (
           <Text key={idx} style={styles.number}>{num}</Text>
@@ -80,3 +76,4 @@ export default function App() {
     </SafeAreaView>
   );
 }
+
