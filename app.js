@@ -11,6 +11,7 @@ import {
   View
 } from 'react-native';
 import styles from './styles';
+import * as Speech from 'expo-speech';
 
 export default function App() {
   const [min, setMin] = useState('1');
@@ -47,6 +48,7 @@ export default function App() {
     if (numbers.length === 0) return;
     const picked = numbers[Math.floor(Math.random() * numbers.length)];
     setPickedNumber(picked);
+    Speech.speak(String(picked));
   };
 
   const StyledButton = ({ title, onPress, active }) => (
