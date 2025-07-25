@@ -19,8 +19,10 @@ export default function App() {
   const [numbers, setNumbers] = useState([]);
   const [filter, setFilter] = useState('all');
   const [sortOrder, setSortOrder] = useState('asc');
+  const [pickedNumber, setPickedNumber] = useState(null);
 
   const generateList = () => {
+    setPickedNumber(null);
     const start = parseInt(min);
     const end = parseInt(max);
     const step = parseInt(increment);
@@ -36,6 +38,7 @@ export default function App() {
   };
 
   const randomizeList = () => {
+    setPickedNumber(null);
     let shuffled = [...numbers].sort(() => Math.random() - 0.5);
     setNumbers(shuffled);
   };
@@ -43,7 +46,7 @@ export default function App() {
   const pickOne = () => {
     if (numbers.length === 0) return;
     const picked = numbers[Math.floor(Math.random() * numbers.length)];
-    setNumbers([picked]);
+    setPickedNumber(picked);
   };
 
   const StyledButton = ({ title, onPress, active }) => (
@@ -62,9 +65,9 @@ export default function App() {
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.card}>
-          {numbers.length === 1 ? (
+          {pickedNumber !== null ? (
             <View style={styles.singleNumberContainer}>
-              <Text style={styles.singleNumber}>{numbers[0]}</Text>
+              <Text style={styles.singleNumber}>{pickedNumber}</Text>
             </View>
           ) : (
             <ScrollView
