@@ -1,5 +1,6 @@
 
-import { useState } from 'react';
+import * as Speech from 'expo-speech';
+import { useEffect, useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -11,7 +12,6 @@ import {
   View
 } from 'react-native';
 import styles from './styles';
-import * as Speech from 'expo-speech';
 
 export default function App() {
   const [min, setMin] = useState('1');
@@ -21,6 +21,14 @@ export default function App() {
   const [filter, setFilter] = useState('all');
   const [sortOrder, setSortOrder] = useState('asc');
   const [pickedNumber, setPickedNumber] = useState(null);
+  const [availableVoices, setAvailableVoices] = useState([]);
+
+  useEffect(() => {
+    Speech.getAvailableVoicesAsync().then(voices => {
+      setAvailableVoices(voices);
+      console.log('Available Voices:', voices);
+    });
+  }, []);
 
   const generateList = () => {
     setPickedNumber(null);
@@ -48,7 +56,11 @@ export default function App() {
     if (numbers.length === 0) return;
     const picked = numbers[Math.floor(Math.random() * numbers.length)];
     setPickedNumber(picked);
-    Speech.speak(String(picked));
+    Speech.speak(String(picked), {
+      voice: 'com.apple.ttsbundle.Samantha-compact',
+      pitch: 1.1,
+      rate: 1.0
+    });
   };
 
   const StyledButton = ({ title, onPress, active }) => (
