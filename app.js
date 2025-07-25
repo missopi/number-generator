@@ -62,15 +62,21 @@ export default function App() {
     >
       <SafeAreaView style={styles.container}>
         <View style={styles.card}>
-          <ScrollView
-            contentContainerStyle={styles.numberList}
-            showsVerticalScrollIndicator={false}
-            keyboardShouldPersistTaps="handled"
-          >
-            {numbers.map((num, idx) => (
-              <Text key={idx} style={styles.number}>{num}</Text>
-            ))}
-          </ScrollView>
+          {numbers.length === 1 ? (
+            <View style={styles.singleNumberContainer}>
+              <Text style={styles.singleNumber}>{numbers[0]}</Text>
+            </View>
+          ) : (
+            <ScrollView
+              contentContainerStyle={styles.numberList}
+              showsVerticalScrollIndicator={false}
+              keyboardShouldPersistTaps="handled"
+            >
+              {numbers.map((num, idx) => (
+                <Text key={idx} style={styles.number}>{num}</Text>
+              ))}
+            </ScrollView>
+          )}
         </View>
 
         <Text style={styles.title}>Number Generator</Text>

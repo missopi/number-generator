@@ -41,7 +41,7 @@ export default StyleSheet.create({
   },
   number: {
     color: 'white',
-    fontSize: 62,
+    fontSize: 65,
     marginVertical: 4
   },
   button: {
@@ -60,5 +60,15 @@ export default StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: '500'
+  },
+  singleNumberContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  singleNumber: {
+    fontSize: 120, // or even 100
+    color: 'white',
+    fontWeight: '600'
   }
 });
