@@ -4,13 +4,7 @@
     "slug": "numbergenerator",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./icon.png",
     "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -22,7 +16,6 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
