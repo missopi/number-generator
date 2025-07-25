@@ -99,9 +99,37 @@ export default function App() {
         <Text style={styles.title}>Number Generator</Text>
 
         <View style={styles.row}>
-          <TextInput style={styles.input} keyboardType="numeric" value={min} onChangeText={setMin} placeholder="Min" />
-          <TextInput style={styles.input} keyboardType="numeric" value={max} onChangeText={setMax} placeholder="Max" />
-          <TextInput style={styles.input} keyboardType="numeric" value={increment} onChangeText={setIncrement} placeholder="Step" />
+          <View style={styles.labeledInput}>
+            <Text style={styles.inputLabel}>From</Text>
+            <TextInput
+              style={styles.input}
+              keyboardType="numeric"
+              value={min}
+              onChangeText={setMin}
+            />
+          </View>
+
+          <View style={styles.labeledInput}>
+            <Text style={styles.inputLabel}>To</Text>
+            <TextInput
+              style={styles.input}
+              keyboardType="numeric"
+              value={max}
+              onChangeText={setMax}
+            />
+          </View>
+        </View>
+
+        <View style={styles.row}>
+          <View style={[styles.labeledInput, { justifyContent: 'center' }]}>
+            <Text style={styles.inputLabel}>Increment by</Text>
+            <TextInput
+              style={styles.input}
+              keyboardType="numeric"
+              value={increment}
+              onChangeText={setIncrement}
+            />
+          </View>
         </View>
 
         <View style={styles.row}>

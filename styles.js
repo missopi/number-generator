@@ -19,12 +19,29 @@ export default StyleSheet.create({
     marginBottom: 12,
     marginHorizontal: 5,
   },
-  input: {
-    backgroundColor: 'white',
+  inputGroup: {
+    marginBottom: 10
+  },
+  labeledInput: {
     flex: 1,
-    marginHorizontal: 5,
-    padding: 10,
-    borderRadius: 10
+    marginHorizontal: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
+  inputLabel: {
+    color: 'white',
+    marginBottom: 4,
+    fontSize: 14,
+    fontWeight: '500'
+  },
+  input: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingVertical: 10,
+    borderRadius: 10,
+    textAlign: 'center',
+    marginLeft: 10,
   },
   card: {
     backgroundColor: '#1f1f1f',
@@ -32,7 +49,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     margin: 10,
-    height: 450,
+    height: 420,
     overflow: 'hidden',
   },
   numberList: {
@@ -42,7 +59,7 @@ export default StyleSheet.create({
   },
   number: {
     color: 'white',
-    fontSize: 65,
+    fontSize: 61,
     marginVertical: 4
   },
   button: {
