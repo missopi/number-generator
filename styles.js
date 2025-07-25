@@ -24,24 +24,23 @@ export default StyleSheet.create({
   },
   labeledInput: {
     flex: 1,
-    marginHorizontal: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 5,
   },
   inputLabel: {
     color: 'white',
-    marginBottom: 4,
+    marginBottom: 10,
     fontSize: 14,
-    fontWeight: '500'
+    fontWeight: '500',
+    textAlign: 'center',
   },
   input: {
-    flex: 1,
     backgroundColor: 'white',
-    paddingVertical: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 16,
+    flex: 1,
     borderRadius: 10,
     textAlign: 'center',
-    marginLeft: 10,
+    marginBottom: 10,
+    marginHorizontal: 4,
   },
   card: {
     backgroundColor: '#1f1f1f',
@@ -49,7 +48,7 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     margin: 10,
-    height: 420,
+    height: 430,
     overflow: 'hidden',
   },
   numberList: {
@@ -59,7 +58,7 @@ export default StyleSheet.create({
   },
   number: {
     color: 'white',
-    fontSize: 61,
+    fontSize: 62,
     marginVertical: 4
   },
   button: {

@@ -118,10 +118,8 @@ export default function App() {
               onChangeText={setMax}
             />
           </View>
-        </View>
 
-        <View style={styles.row}>
-          <View style={[styles.labeledInput, { justifyContent: 'center' }]}>
+          <View style={styles.labeledInput}>
             <Text style={styles.inputLabel}>Increment by</Text>
             <TextInput
               style={styles.input}
@@ -130,6 +128,10 @@ export default function App() {
               onChangeText={setIncrement}
             />
           </View>
+        </View>
+
+        <View style={styles.row}>
+          
         </View>
 
         <View style={styles.row}>
