@@ -16,7 +16,8 @@ export default StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 12
+    marginBottom: 12,
+    marginHorizontal: 5,
   },
   input: {
     backgroundColor: 'white',
