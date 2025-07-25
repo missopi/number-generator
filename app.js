@@ -1,5 +1,4 @@
 
-import * as Speech from 'expo-speech';
 import { useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -34,25 +33,17 @@ export default function App() {
     }
     if (sortOrder === 'desc') list.reverse();
     setNumbers(list);
-    speakNumbers(list);
   };
 
   const randomizeList = () => {
     let shuffled = [...numbers].sort(() => Math.random() - 0.5);
     setNumbers(shuffled);
-    speakNumbers(shuffled);
   };
 
   const pickOne = () => {
     if (numbers.length === 0) return;
     const picked = numbers[Math.floor(Math.random() * numbers.length)];
     setNumbers([picked]);
-    speakNumbers([picked]);
-  };
-
-  const speakNumbers = (list) => {
-    const spoken = list.join(', ');
-    Speech.speak(spoken);
   };
 
   const StyledButton = ({ title, onPress, active }) => (
